@@ -1354,7 +1354,49 @@ nav.scrolled {
   margin-bottom: 32px;
 }
 
-/* ── FAQ ─────────────────────────────────────────────── */
+/* ── COACH CAROUSEL (mobile only) ───────────────────── */
+.coach-carousel { display: none; position: relative; }
+.coach-carousel__inner { overflow: hidden; }
+.coach-carousel__track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.coach-carousel__track .coach-card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.coach-carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 24px;
+}
+.coach-carousel__btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(34,120,172,0.3);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.coach-carousel__btn:hover { border-color: var(--steel-light); color: var(--steel-light); }
+.coach-carousel__dots { display: flex; gap: 8px; }
+.coach-carousel__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--faint);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.coach-carousel__dot.active { background: var(--steel-light); box-shadow: 0 0 8px rgba(56,153,204,0.6); }
 .faq-section { background: var(--navy-2); padding: clamp(72px,8vw,128px) 0; }
 .faq-list { max-width: 800px; margin: 0 auto; }
 .faq-item {
@@ -1546,6 +1588,11 @@ footer {
   .sp-dots { flex-wrap: wrap; justify-content: center; max-width: 240px; }
   .sp-dot { width: 6px; height: 6px; }
   .trust-bar__track { gap: 40px; }
+  /* Hide sp-dots on mobile, show only arrows */
+  .sp-dots { display: none; }
+  /* Coach carousel */
+  #coachGrid { display: none; }
+  .coach-carousel { display: block; }
 }
 
 @media (max-width: 640px) {
@@ -1568,7 +1615,6 @@ footer {
   .section__header h2 { font-size: clamp(2.2rem, 7vw, 4rem); }
   .section__header { margin-bottom: 40px; }
   .sp-nav { gap: 12px; }
-  .sp-dots { max-width: 200px; gap: 5px; }
   .hero__cta-group .btn { width: 100%; justify-content: center; }
   .cta-section__btns { flex-direction: column; align-items: center; }
   .cta-section__btns .btn { width: 100%; max-width: 360px; justify-content: center; }
@@ -2517,7 +2563,9 @@ footer {
 
     <!-- Coaching staff: 3 coaches in grid -->
     <p class="coaches-sublabel reveal">The Coaching Staff</p>
-    <div class="staff-grid reveal">
+
+    <!-- Desktop grid -->
+    <div class="staff-grid reveal" id="coachGrid">
       <div class="coach-card">
         <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de92d39ef76eebec5600fb.png" alt="Dr. Brent Momb" style="object-position:50% 20%;"></div>
         <div class="coach-card__degree">Ph.D. Muscle Biology</div>
@@ -2545,6 +2593,56 @@ footer {
         <h4>Jacqueline Llovet</h4>
         <div class="coach-card__role">Coach</div>
         <p>A Registered Nurse specializing in Women's Health since 1997, Jackie became a coach after her own transformation in her late 40s. She is especially passionate about helping busy parents and midlife women build strength and confidence at any age.</p>
+      </div>
+    </div>
+
+    <!-- Mobile carousel -->
+    <div class="coach-carousel" id="coachCarousel">
+      <div class="coach-carousel__inner">
+        <div class="coach-carousel__track" id="coachTrack">
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de92d39ef76eebec5600fb.png" alt="Dr. Brent Momb" style="object-position:50% 20%;"></div>
+            <div class="coach-card__degree">Ph.D. Muscle Biology</div>
+            <h4>Dr. Brent Momb</h4>
+            <div class="coach-card__role">Coach and Researcher</div>
+            <p>Dr. Brent holds a Ph.D. in Muscle Biology from UMass and is an active postdoctoral researcher. He brings the latest science directly into his coaching, helping clients break through plateaus and build strength sustainably.</p>
+          </div>
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de931bd8d5f6ae837c9b21.png" alt="Ceci Gonzalez" style="object-position:50% 15%;"></div>
+            <div class="coach-card__degree">M.S. Body Composition</div>
+            <h4>Ceci Gonzalez</h4>
+            <div class="coach-card__role">Coach</div>
+            <p>Ceci holds a Master's in Body Composition and is a certified personal trainer. A lifelong athlete and strength training enthusiast, she is known for her warm coaching style that makes fitness both effective and genuinely enjoyable.</p>
+          </div>
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de93853d447256448daee5.png" alt="Miguel Mendes" style="object-position:50% 15%;"></div>
+            <div class="coach-card__degree">M.S. Sport and Exercise Nutrition</div>
+            <h4>Miguel Mendes</h4>
+            <div class="coach-card__role">Coach</div>
+            <p>Miguel is from Lisbon, Portugal and has been coaching for over 6 years. He holds a Master's in Sport and Exercise Nutrition and believes fitness should enhance your life, not consume it. It is about progress, not perfection.</p>
+          </div>
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de92fae7237c4dd30f36ad.png" alt="Jacqueline Llovet" style="object-position:50% 15%;"></div>
+            <div class="coach-card__degree">Registered Nurse</div>
+            <h4>Jacqueline Llovet</h4>
+            <div class="coach-card__role">Coach</div>
+            <p>A Registered Nurse specializing in Women's Health since 1997, Jackie became a coach after her own transformation in her late 40s. She is especially passionate about helping busy parents and midlife women build strength and confidence at any age.</p>
+          </div>
+        </div>
+      </div>
+      <div class="coach-carousel__nav">
+        <button class="coach-carousel__btn" id="coachPrev">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="coach-carousel__dots">
+          <button class="coach-carousel__dot active" data-c="0"></button>
+          <button class="coach-carousel__dot" data-c="1"></button>
+          <button class="coach-carousel__dot" data-c="2"></button>
+          <button class="coach-carousel__dot" data-c="3"></button>
+        </div>
+        <button class="coach-carousel__btn" id="coachNext">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -2921,7 +3019,31 @@ document.querySelectorAll('.pillar-accordion-trigger').forEach(trigger => {
   });
 });
 
-// ── FAQ Accordion ───────────────────────────────────────
+// ── Coach Carousel (mobile) ─────────────────────────────
+const coachTrack = document.getElementById('coachTrack');
+const coachDots = document.querySelectorAll('.coach-carousel__dot');
+let coachActive = 0;
+const coachTotal = 4;
+
+function goToCoach(n) {
+  coachActive = (n + coachTotal) % coachTotal;
+  coachTrack.style.transform = `translateX(-${coachActive * 100}%)`;
+  coachDots.forEach((d, i) => d.classList.toggle('active', i === coachActive));
+}
+
+document.getElementById('coachPrev')?.addEventListener('click', () => goToCoach(coachActive - 1));
+document.getElementById('coachNext')?.addEventListener('click', () => goToCoach(coachActive + 1));
+coachDots.forEach(d => d.addEventListener('click', () => goToCoach(parseInt(d.dataset.c))));
+
+// Touch swipe for coach carousel
+let coachTouchX = null;
+coachTrack?.addEventListener('touchstart', e => { coachTouchX = e.touches[0].clientX; }, { passive: true });
+coachTrack?.addEventListener('touchend', e => {
+  if (!coachTouchX) return;
+  const dx = coachTouchX - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) goToCoach(dx > 0 ? coachActive + 1 : coachActive - 1);
+  coachTouchX = null;
+}, { passive: true });
 document.querySelectorAll('.faq-trigger').forEach(trigger => {
   trigger.addEventListener('click', () => {
     const body = trigger.nextElementSibling;
