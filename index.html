@@ -3,30 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service | Lean & Strong 21-Day Challenge</title>
-<meta name="description" content="Terms of Service for the Lean & Strong 21-Day Challenge by Strong Standard.">
+<title>Cancellation In Progress | Strong Standard Coaching</title>
+<meta name="description" content="Your membership cancellation is in progress. You will receive a confirmation email within 24 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --navy:        #080D1A;
   --navy-2:      #0D1526;
   --navy-3:      #111C30;
+  --navy-4:      #17243B;
   --steel:       #1A5F8A;
   --steel-mid:   #2278AC;
   --steel-light: #3899CC;
   --steel-glow:  rgba(34, 120, 172, 0.18);
+  --ice:         #A8CDE0;
   --white:       #FFFFFF;
   --off-white:   #EEF3F7;
   --muted:       #8A9BB0;
   --faint:       #4A5A6E;
+  --gold:        #C8A96E;
+  --success:     #3DD68C;
+  --warning:     #E05555;
 
   --font-display: 'Bebas Neue', sans-serif;
   --font-serif:   'DM Serif Display', serif;
   --font-body:    'DM Sans', sans-serif;
 
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   20px;
   --r-full: 9999px;
 }
 
@@ -40,11 +48,15 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   font-size: 17px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
-/* ── NAV ─────────────────────────────────────────────── */
+/* ── NAV ────────────────────────────────────────────── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -70,167 +82,230 @@ nav.scrolled {
   display: block;
 }
 
-.nav-cta {
-  display: inline-flex;
+/* ── MAIN CONTENT ───────────────────────────────────── */
+.page-wrap {
+  flex: 1;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--steel-light);
-  padding: 10px 24px;
-  border: 1.5px solid var(--steel-mid);
-  border-radius: var(--r-full);
-  background: transparent;
-  transition: all 0.22s ease;
-}
-
-.nav-cta:hover {
-  background: var(--steel-glow);
-  border-color: var(--steel-light);
-}
-
-/* ── MAIN CONTENT ────────────────────────────────────── */
-main {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 200px 32px 100px;
-}
-
-/* ── PAGE HEADER ─────────────────────────────────────── */
-.page-header {
-  margin-bottom: 56px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
+  justify-content: center;
+  padding: 160px 32px 100px;
   position: relative;
+  overflow: hidden;
 }
 
-.page-header::after {
+/* Grid background */
+.page-wrap::before {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34,120,172,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,120,172,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
 }
 
-.page-eyebrow {
+/* Radial glow */
+.page-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(26,95,138,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,120,172,0.1) 0%, transparent 70%);
+  top: 10%;
+  right: 5%;
+  animation: floatGlow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-20px, 30px) scale(1.05); }
+}
+
+/* ── CARD ───────────────────────────────────────────── */
+.cancel-card {
+  position: relative;
+  z-index: 1;
+  background: var(--navy-2);
+  border: 1px solid rgba(34,120,172,0.2);
+  border-radius: var(--r-lg);
+  padding: 56px 60px;
+  max-width: 620px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cancel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--steel), var(--steel-light));
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+
+/* Icon circle */
+.cancel-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(34,120,172,0.1);
+  border: 1.5px solid rgba(34,120,172,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.cancel-icon svg {
+  color: var(--steel-light);
+}
+
+/* Label / eyebrow */
+.card-label {
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--steel-light);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+  display: block;
 }
 
-.page-eyebrow .line {
-  width: 40px;
-  height: 1px;
-  background: var(--steel-mid);
-}
-
-.page-header h1 {
+/* Heading */
+.cancel-card h1 {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
   color: var(--white);
-  letter-spacing: 0.02em;
   line-height: 1;
-  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
 }
 
-.page-header .effective-date {
-  font-size: 14px;
-  color: var(--muted);
-  font-weight: 400;
+/* Divider */
+.card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
+  margin: 28px 0;
 }
 
-/* ── SECTIONS ────────────────────────────────────────── */
-.tos-section {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(34,120,172,0.1);
-}
-
-.tos-section:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.tos-section h2 {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--steel-light);
-  margin-bottom: 16px;
-}
-
-.tos-section p {
-  font-size: 17px;
+/* Body copy — card text: 14-15px */
+.cancel-card p {
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.75;
   font-weight: 300;
   margin-bottom: 12px;
 }
 
-.tos-section p:last-child {
+.cancel-card p:last-of-type {
   margin-bottom: 0;
 }
 
-.tos-section p strong {
+.cancel-card p strong {
   color: var(--off-white);
   font-weight: 500;
 }
 
-.tos-section ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.tos-section ul li {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.65;
-  font-weight: 300;
-  padding-left: 20px;
-  position: relative;
-}
-
-.tos-section ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--steel-light);
-  font-weight: 700;
+/* Timeline pill */
+.timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34,120,172,0.12);
+  border: 1px solid rgba(34,120,172,0.25);
+  border-radius: var(--r-full);
+  padding: 8px 20px;
   font-size: 13px;
-}
-
-.tos-section a {
+  font-weight: 600;
   color: var(--steel-light);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  letter-spacing: 0.04em;
+  margin: 20px 0 28px;
+}
+
+.timeline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--steel-light);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Email link */
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--steel-light);
+  font-weight: 500;
+  font-size: 15px;
   transition: color 0.2s;
+  border-bottom: 1px solid rgba(56,153,204,0.3);
+  padding-bottom: 1px;
 }
 
-.tos-section a:hover {
+.email-link:hover {
   color: var(--white);
+  border-color: rgba(255,255,255,0.4);
 }
 
-/* ── FOOTER ──────────────────────────────────────────── */
+/* CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  border-radius: var(--r-full);
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  text-decoration: none;
+  background: var(--steel-mid);
+  color: var(--white);
+  padding: 16px 36px;
+  box-shadow: 0 0 30px rgba(34,120,172,0.3);
+  margin-top: 32px;
+}
+
+.btn-primary:hover {
+  background: var(--steel-light);
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(56,153,204,0.45);
+}
+
+/* ── FOOTER (matches homepage exactly) ──────────────── */
 footer {
   background: var(--navy-2);
   border-top: 1px solid rgba(34,120,172,0.15);
   padding: 56px 32px 36px;
 }
+
 .footer__inner {
   max-width: 1120px;
   margin: 0 auto 40px;
@@ -239,6 +314,7 @@ footer {
   justify-content: space-between;
   gap: 40px;
 }
+
 .footer-brand__tagline {
   font-family: var(--font-serif);
   font-style: italic;
@@ -246,23 +322,28 @@ footer {
   color: var(--faint);
   margin-top: 12px;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
   gap: 28px;
   flex-wrap: nowrap;
 }
+
 .footer-links a {
   font-size: 13px;
   color: var(--muted);
   transition: color 0.2s;
 }
+
 .footer-links a:hover { color: var(--white); }
+
 .footer-socials {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
 }
+
 .social-icon {
   width: 38px; height: 38px;
   border-radius: 50%;
@@ -274,11 +355,13 @@ footer {
   color: var(--muted);
   transition: all 0.2s;
 }
+
 .social-icon:hover {
   background: var(--steel-glow);
   border-color: var(--steel-light);
   color: var(--steel-light);
 }
+
 .footer__bottom {
   max-width: 1120px;
   margin: 0 auto;
@@ -287,124 +370,93 @@ footer {
   display: flex;
   justify-content: center;
 }
+
 .footer__copy { font-size: 13px; color: var(--faint); }
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
-@media (max-width: 600px) {
-  main { padding: 160px 20px 80px; }
-  nav { padding: 16px 20px; }
-  nav.scrolled { padding: 12px 20px; }
+@media (max-width: 960px) {
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 24px; }
   .footer-links { justify-content: flex-start; flex-wrap: wrap; gap: 16px; }
   .footer-socials { justify-content: flex-start; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  .page-wrap { padding: 120px 20px 80px; }
+  .cancel-card { padding: 40px 28px; }
+  .footer__inner { padding: 0 4px; }
+  .footer__copy { text-align: center; }
+  .footer__bottom { justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════ -->
 <nav id="nav">
   <div class="nav-logo">
-    <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard" style="height:24px;width:auto;display:block;">
+    <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard">
   </div>
-  <a href="https://drjoeymunoz.com" class="nav-cta">Apply Now</a>
 </nav>
 
-<!-- MAIN -->
-<main>
+<!-- ═══════════════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════════════ -->
+<main class="page-wrap">
+  <div class="glow-orb"></div>
 
-  <!-- Page Header -->
-  <div class="page-header">
-    <div class="page-eyebrow">
-      <span class="line"></span>
-      Legal
+  <div class="cancel-card">
+
+    <!-- Icon -->
+    <div class="cancel-icon">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 12h6M12 9v6M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/>
+      </svg>
     </div>
-    <h1>Terms of Service</h1>
-    <p class="effective-date">Effective Date: January 6, 2025</p>
-  </div>
 
-  <!-- Intro -->
-  <div class="tos-section">
-    <p>Welcome to the Lean & Strong 21-Day Challenge. By signing up or participating in this program, you agree to the following terms and conditions. Please read them carefully.</p>
-  </div>
+    <!-- Label + Heading -->
+    <span class="card-label">Membership Update</span>
+    <h1>Your Cancellation<br>Is In Progress</h1>
 
-  <!-- 1. Eligibility -->
-  <div class="tos-section">
-    <h2>1. Eligibility</h2>
-    <p>The Challenge is open to individuals aged 18 or older. By registering, you confirm that you meet this eligibility requirement.</p>
-  </div>
+    <!-- Timeline badge -->
+    <div class="timeline-badge">
+      <span class="timeline-dot"></span>
+      Confirmation email within 24 hours
+    </div>
 
-  <!-- 2. Program Details -->
-  <div class="tos-section">
-    <h2>2. Program Details</h2>
-    <ul>
-      <li>The Challenge includes fitness and nutrition guidance provided by the Strong Standard team.</li>
-      <li>Results may vary based on individual effort, adherence, and starting fitness level.</li>
-      <li>The program is not a substitute for professional medical advice. Always consult a healthcare provider before starting any fitness or nutrition program.</li>
-    </ul>
-  </div>
+    <div class="card-divider"></div>
 
-  <!-- 3. Payment and Refunds -->
-  <div class="tos-section">
-    <h2>3. Payment and Refunds</h2>
-    <p>Payment is required in full at the time of registration.</p>
-    <p><strong>Refund Policy:</strong> If you are not satisfied with your experience after completing the full 21 days and adhering to the program, you may request a refund by contacting us at <a href="mailto:support@strongstandard.com">support@strongstandard.com</a> within 7 days of the Challenge's conclusion.</p>
-  </div>
+    <!-- Body copy -->
+    <p>
+      We have started the process to cancel your <strong>Strong Standard</strong> membership.
+      You will receive a confirmation email within the next 24 hours once everything has been processed.
+    </p>
 
-  <!-- 4. User Conduct -->
-  <div class="tos-section">
-    <h2>4. User Conduct</h2>
-    <p>Participants agree to:</p>
-    <ul>
-      <li>Follow the guidelines provided during the Challenge.</li>
-      <li>Refrain from sharing program materials with non-participants.</li>
-      <li>Act respectfully in all communications, including those within the private community.</li>
-    </ul>
-  </div>
+    <p style="margin-top: 16px;">
+      If you do not receive the confirmation email or have any questions, please reach out to our support team directly:
+    </p>
 
-  <!-- 5. Intellectual Property -->
-  <div class="tos-section">
-    <h2>5. Intellectual Property</h2>
-    <p>All materials provided as part of the Challenge, including workout plans, meal guides, and educational resources, are the intellectual property of Strong Standard. Participants may use these materials for personal, non-commercial purposes only.</p>
-  </div>
+    <p style="margin-top: 20px;">
+      <a href="mailto:support@strongstandard.com" class="email-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        support@strongstandard.com
+      </a>
+    </p>
 
-  <!-- 6. Limitation of Liability -->
-  <div class="tos-section">
-    <h2>6. Limitation of Liability</h2>
-    <p>Strong Standard and its coaches are not liable for:</p>
-    <ul>
-      <li>Injuries, health complications, or damages resulting from participation in the Challenge.</li>
-      <li>Outcomes that do not meet participant expectations.</li>
-    </ul>
-  </div>
+    <div class="card-divider"></div>
 
-  <!-- 7. Termination -->
-  <div class="tos-section">
-    <h2>7. Termination of Participation</h2>
-    <p>We reserve the right to terminate a participant's access to the Challenge if they violate these Terms or engage in behavior that disrupts the program or community.</p>
-  </div>
+    <p style="font-size: 14px; color: var(--faint);">
+      Thank you for being part of the Strong Standard community. We hope to see you back in the future.
+    </p>
 
-  <!-- 8. Changes -->
-  <div class="tos-section">
-    <h2>8. Changes to the Program</h2>
-    <p>We reserve the right to modify the Challenge content, schedule, or pricing at any time. Participants will be notified of significant changes.</p>
   </div>
-
-  <!-- 9. Governing Law -->
-  <div class="tos-section">
-    <h2>9. Governing Law</h2>
-    <p>These Terms are governed by the laws of Florida, United States. Any disputes will be resolved in accordance with these laws.</p>
-  </div>
-
-  <!-- 10. Contact -->
-  <div class="tos-section">
-    <h2>10. Contact Information</h2>
-    <p>For questions or concerns about these Terms, please contact us at <a href="mailto:support@strongstandard.com">support@strongstandard.com</a>.</p>
-  </div>
-
 </main>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
 <footer>
   <div class="footer__inner">
     <div class="footer-brand">
