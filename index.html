@@ -48,7 +48,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
@@ -426,6 +426,7 @@ h3 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════
@@ -1716,8 +1717,74 @@ footer {
 }
 
 /* ═══════════════════════════════════════════════
-   SCROLL REVEAL
+   TESTIMONIAL CAROUSEL (mobile)
 ═══════════════════════════════════════════════ */
+.tcard-carousel {
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.tcard-carousel__track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.tcard-carousel__track .tcard {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.tcard-carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tcard-carousel__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(34,120,172,0.3);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.tcard-carousel__btn:hover {
+  border-color: var(--steel-light);
+  color: var(--steel-light);
+}
+
+.tcard-carousel__dots {
+  display: flex;
+  gap: 7px;
+}
+
+.tcard-carousel__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--faint);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.tcard-carousel__dot.active {
+  background: var(--steel-light);
+  box-shadow: 0 0 8px rgba(56,153,204,0.6);
+}
+
+/* ─────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -1755,6 +1822,12 @@ footer {
   .floating-cta { bottom: 16px; right: 16px; }
   .bonus-item { flex-direction: column; gap: 12px; }
   .bonus-item__value { align-self: flex-start; }
+  /* Nav: smaller logo and button */
+  #nav img { height: 18px !important; }
+  #nav .btn-primary { font-size: 12px !important; padding: 10px 18px !important; }
+  /* Testimonials: hide grid, show carousel */
+  .testimonials__grid { display: none; }
+  .tcard-carousel { display: block; }
 }
 </style>
 </head>
@@ -2105,6 +2178,93 @@ footer {
             Achieved desired lean physique
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile carousel version -->
+    <div class="tcard-carousel" id="tcardCarousel">
+      <div class="tcard-carousel__track" id="tcardTrack">
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e6ddea13c4b6739b0fb439.jpeg" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"My experience has been excellent."</div>
+            <blockquote class="tcard__quote">"I've lost over 25 lbs. of fat working with Strong Standard and built substantial muscle!"</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Lost 25+ lbs of fat and built muscle</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e6de8a3792943a72e42e4d.webp" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"Transformed How I Feel About My Body Post-Pregnancy"</div>
+            <blockquote class="tcard__quote">"I've overcome my challenges and now feel empowered in my own skin after my pregnancy!"</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Empowered body confidence post-pregnancy</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e5a649b1c04bcea24fb54d.jpeg" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"I can't recommend Strong Standard enough!"</div>
+            <blockquote class="tcard__quote">"I lost over 40lbs of fat and my latest blood draw showed a tremendous drop in all the numbers I was worried about!"</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Lost 40+ lbs and improved blood work</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e6dee3e519ed575b251725.webp" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"I Feel Leaner and Stronger Than Ever Before"</div>
+            <blockquote class="tcard__quote">"I've dropped over 10 lbs of body fat after menopause, which I thought was impossible!"</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Dropped 10+ lbs after menopause</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e6de1fe519ed3e2d251661.jpeg" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"My results were better than I expected."</div>
+            <blockquote class="tcard__quote">"I added 10 lbs of lean muscle and shed 16 lbs of fat in just 6 months."</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>+10 lbs muscle, -16 lbs fat in 6 months</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard__img">
+            <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/67e6deca30a81cf110f49df6.webp" alt="Client transformation" loading="lazy">
+            <div class="tcard__img-labels"><span>Before</span><span class="after-label">After</span></div>
+          </div>
+          <div class="tcard__body">
+            <div class="tcard__stars">★★★★★</div>
+            <div class="tcard__headline">"Reignited My Motivation to Train"</div>
+            <blockquote class="tcard__quote">"I've never felt or looked stronger and have achieved the lean physique I've always desired."</blockquote>
+            <div class="tcard__result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Achieved desired lean physique</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard-carousel__nav">
+        <button class="tcard-carousel__btn" id="tcardPrev">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="tcard-carousel__dots" id="tcardDots"></div>
+        <button class="tcard-carousel__btn" id="tcardNext">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -2787,6 +2947,43 @@ footer {
       } else {
         floatingCta.classList.remove('visible');
       }
+    }, { passive: true });
+  }
+
+  // ── TESTIMONIAL CAROUSEL (mobile) ────────────────
+  const tcardTrack = document.getElementById('tcardTrack');
+  const tcardDotsContainer = document.getElementById('tcardDots');
+  const tcardTotal = tcardTrack ? tcardTrack.children.length : 0;
+  let tcardActive = 0;
+
+  if (tcardTrack && tcardTotal > 0) {
+    // Build dots
+    for (let i = 0; i < tcardTotal; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'tcard-carousel__dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToTcard(i));
+      tcardDotsContainer.appendChild(dot);
+    }
+
+    function goToTcard(n) {
+      tcardActive = (n + tcardTotal) % tcardTotal;
+      tcardTrack.style.transform = 'translateX(-' + (tcardActive * 100) + '%)';
+      tcardDotsContainer.querySelectorAll('.tcard-carousel__dot').forEach((d, i) => {
+        d.classList.toggle('active', i === tcardActive);
+      });
+    }
+
+    document.getElementById('tcardPrev').addEventListener('click', () => goToTcard(tcardActive - 1));
+    document.getElementById('tcardNext').addEventListener('click', () => goToTcard(tcardActive + 1));
+
+    // Touch swipe
+    let tcardTouchX = null;
+    tcardTrack.addEventListener('touchstart', e => { tcardTouchX = e.touches[0].clientX; }, { passive: true });
+    tcardTrack.addEventListener('touchend', e => {
+      if (!tcardTouchX) return;
+      const dx = tcardTouchX - e.changedTouches[0].clientX;
+      if (Math.abs(dx) > 40) goToTcard(dx > 0 ? tcardActive + 1 : tcardActive - 1);
+      tcardTouchX = null;
     }, { passive: true });
   }
 
