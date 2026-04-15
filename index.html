@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're In! | 21 Day Lean & Strong Challenge | Strong Standard</title>
-<meta name="description" content="You're officially registered for the Strong Standard 21 Day Lean & Strong Challenge. Check your email for next steps.">
+<title>21 Day Lean & Strong Challenge | Strong Standard</title>
+<meta name="description" content="Join the 21 Day Lean & Strong Challenge. Science-backed coaching by Dr. Joey Munoz, Ph.D. Only 60 spots available.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
+<!-- GHL dependencies -->
+<script src="https://stcdn.leadconnectorhq.com/libphonenumber/1.10.60/libphonenumber-js.min.js" async></script>
+<script src="https://stcdn.leadconnectorhq.com/intl-tel-input/17.0.12/js/utils.min.js" async></script>
+<script src="https://stcdn.leadconnectorhq.com/intl-tel-input/intlTelInput.min.js" async></script>
+<link rel="stylesheet" href="https://stcdn.leadconnectorhq.com/intl-tel-input/17.0.12/css/intlTelInput.min.css">
+
 <style>
-/* ── CSS VARIABLES ──────────────────────────────────── */
 :root {
   --navy:        #080D1A;
   --navy-2:      #0D1526;
@@ -19,8 +24,7 @@
   --steel:       #1A5F8A;
   --steel-mid:   #2278AC;
   --steel-light: #3899CC;
-  --steel-glow:  rgba(34, 120, 172, 0.18);
-  --ice:         #A8CDE0;
+  --steel-glow:  rgba(34,120,172,0.18);
   --white:       #FFFFFF;
   --off-white:   #EEF3F7;
   --muted:       #8A9BB0;
@@ -28,18 +32,10 @@
   --gold:        #C8A96E;
   --success:     #3DD68C;
   --warning:     #E05555;
-
   --font-display: 'Bebas Neue', sans-serif;
   --font-serif:   'DM Serif Display', serif;
   --font-body:    'DM Sans', sans-serif;
-
-  --r-sm:   6px;
-  --r-md:   12px;
-  --r-lg:   20px;
-  --r-full: 9999px;
-
-  --shadow-md:   0 8px 32px rgba(0,0,0,0.35);
-  --shadow-glow: 0 0 40px rgba(34, 120, 172, 0.25);
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-full: 9999px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,68 +48,27 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   font-size: 17px;
-  min-height: 100vh;
 }
 
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
-/* ── BACKGROUND ─────────────────────────────────────── */
-.page-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
 
-.page-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(34,120,172,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,120,172,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.page-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(26,95,138,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(26,95,138,0.08) 0%, transparent 60%);
-}
-
-.glow-orb {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(34,120,172,0.1) 0%, transparent 70%);
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: floatGlow 10s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes floatGlow {
-  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-  50%       { transform: translateX(-50%) scale(1.1) translateY(20px); opacity: 1; }
-}
-
-/* ── NAV ────────────────────────────────────────────── */
+/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 50px 32px;
+  padding: 36px 32px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, rgba(8,13,26,0.97) 0%, rgba(8,13,26,0) 100%);
+  background: linear-gradient(to bottom, rgba(8,13,26,0.98) 0%, rgba(8,13,26,0) 100%);
   transition: background 0.3s, padding 0.3s;
 }
 
@@ -121,353 +76,449 @@ nav.scrolled {
   background: rgba(8,13,26,0.97);
   border-bottom: 1px solid rgba(34,120,172,0.2);
   box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  padding: 12px 32px;
+  padding: 20px 32px;
 }
 
-.nav-logo img {
-  height: 24px;
-  width: auto;
-  display: block;
-}
+.nav-logo img { height: 24px; width: auto; display: block; }
 
-/* ── MAIN WRAPPER ───────────────────────────────────── */
-.page-wrapper {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 130px 24px 80px;
-}
-
-/* ── CONFIRMATION CARD ──────────────────────────────── */
-.confirm-card {
-  width: 100%;
-  max-width: 680px;
-  background: var(--navy-2);
-  border: 1px solid rgba(34,120,172,0.2);
-  border-radius: 28px;
-  padding: 56px 48px;
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 160px 0 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 60px rgba(34,120,172,0.08);
-  animation: cardIn 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  background: var(--navy);
 }
 
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(40px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.confirm-card::before {
+.page-header::before {
   content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--steel), var(--steel-light), var(--steel));
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(34,120,172,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,120,172,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-@keyframes shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.confirm-card::after {
+.page-header::after {
   content: '';
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(34,120,172,0.1) 0%, transparent 70%);
-  pointer-events: none;
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(26,95,138,0.15) 0%, transparent 70%);
 }
 
-/* ── SUCCESS BADGE ──────────────────────────────────── */
-.success-badge {
-  display: inline-flex;
+.page-header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(61, 214, 140, 0.1);
-  border: 1px solid rgba(61, 214, 140, 0.3);
-  border-radius: var(--r-full);
-  padding: 8px 20px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--success);
-  margin-bottom: 28px;
-  animation: badgeIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s both;
-}
-
-@keyframes badgeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.success-badge__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--success);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(61,214,140,0.4); }
-  50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(61,214,140,0); }
-}
-
-/* ── EMOJI ──────────────────────────────────────────── */
-.confirm-emoji {
-  font-size: 56px;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 20px;
-  animation: bounceIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both;
-  display: block;
 }
 
-@keyframes bounceIn {
-  from { opacity: 0; transform: scale(0.5) rotate(-10deg); }
-  60%  { transform: scale(1.15) rotate(5deg); }
-  to   { opacity: 1; transform: scale(1) rotate(0deg); }
-}
+.eyebrow .line { width: 36px; height: 1px; background: var(--steel-mid); }
 
-/* ── HEADLINE ───────────────────────────────────────── */
-.confirm-label {
-  font-family: var(--font-body);
+.eyebrow-label {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--steel-light);
-  margin-bottom: 12px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.5s both;
 }
 
-.confirm-h1 {
+.page-header h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  letter-spacing: 0.02em;
-  line-height: 0.95;
+  font-size: clamp(2.4rem, 4vw, 4.6rem);
   color: var(--white);
-  margin-bottom: 8px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.55s both;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 22px;
 }
 
-.confirm-h1 .accent {
-  color: var(--steel-light);
-  display: block;
-}
+.page-header h1 .accent { color: var(--steel-light); }
 
-.confirm-h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  font-weight: 400;
-  margin-bottom: 24px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.6s both;
-}
-
-.confirm-sub {
+.page-header-sub {
   font-size: 19px;
   color: var(--muted);
-  line-height: 1.75;
   font-weight: 300;
-  max-width: 500px;
-  margin: 0 auto 36px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.65s both;
+  line-height: 1.7;
 }
 
-.confirm-sub strong {
+.page-header-phone {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+.page-header-phone a {
+  color: var(--steel-light);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.page-header-phone a:hover { color: var(--white); }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
+}
+
+/* ── FORM SECTION ── */
+.form-section {
+  background: var(--navy-2);
+  padding: 72px 0;
+}
+
+.form-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.form-card {
+  background: var(--navy-3);
+  border: 1px solid rgba(34,120,172,0.2);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--steel), var(--steel-light));
+}
+
+.form-card-header {
+  padding: 36px 40px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(34,120,172,0.12);
+}
+
+.form-card-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.form-card-sub {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.form-card-sub strong {
   color: var(--off-white);
   font-weight: 500;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── DIVIDER ─────────────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
-  margin: 32px 0;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.7s both;
-}
-
-/* ── NEXT STEPS ─────────────────────────────────────── */
-.next-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  text-align: left;
-  margin-bottom: 36px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.75s both;
-}
-
-.next-steps__title {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--steel-light);
-  margin-bottom: 6px;
-  text-align: center;
-}
-
-.step-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  background: rgba(17,28,48,0.8);
-  border: 1px solid rgba(34,120,172,0.12);
-  border-radius: var(--r-md);
-  padding: 18px 20px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.step-item:hover {
-  border-color: rgba(34,120,172,0.35);
-  transform: translateX(4px);
-}
-
-.step-item__num {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--steel-glow);
-  border: 1px solid rgba(34,120,172,0.3);
-  display: flex;
+.spots-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--steel-light);
-  margin-top: 1px;
-}
-
-.step-item__text {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.step-item__text strong {
-  color: var(--off-white);
-  display: block;
-  font-size: 14px;
-  margin-bottom: 2px;
-  font-weight: 600;
-}
-
-/* ── EMAIL CALLOUT ──────────────────────────────────── */
-.email-callout {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: rgba(34,120,172,0.08);
-  border: 1px solid rgba(34,120,172,0.2);
-  border-radius: var(--r-md);
-  padding: 16px 20px;
-  margin-bottom: 36px;
-  text-align: left;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.8s both;
-}
-
-.email-callout__icon {
-  flex-shrink: 0;
-  font-size: 22px;
-}
-
-.email-callout__text {
+  gap: 8px;
+  border: 1px solid rgba(34,120,172,0.25);
+  border-radius: var(--r-full);
+  padding: 8px 20px;
   font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.email-callout__text strong {
-  color: var(--steel-light);
-  font-weight: 600;
-}
-
-.email-callout__text a {
-  color: var(--steel-light);
-  text-decoration: underline;
-  text-decoration-color: rgba(56,153,204,0.4);
-  transition: color 0.2s;
-}
-
-.email-callout__text a:hover {
-  color: var(--ice);
-}
-
-/* ── CHALLENGE STATS ────────────────────────────────── */
-.challenge-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(34,120,172,0.15);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  margin-bottom: 36px;
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.85s both;
-}
-
-.c-stat {
-  background: var(--navy-3);
-  padding: 20px 12px;
-  text-align: center;
-}
-
-.c-stat__num {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.c-stat__num span {
-  color: var(--steel-light);
-}
-
-.c-stat__label {
-  font-size: 11px;
+  font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.04em;
-  line-height: 1.3;
 }
 
-/* ── CTA BUTTON ─────────────────────────────────────── */
-.cta-wrap {
-  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s both;
+.spots-badge strong { color: var(--off-white); font-weight: 600; }
+
+.form-card-body { padding: 32px 40px 36px; }
+
+/* ── GHL FORM OVERRIDES ── */
+.form-card-body .hl-app,
+.form-card-body section#form-builder,
+.form-card-body .hl_form-builder--main { padding: 0 !important; margin: 0 !important; }
+
+.form-card-body .form-builder--wrap,
+.form-card-body .form-builder--wrap-full {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+.form-card-body #_builder-form {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+.form-card-body .fields-container { padding: 0 !important; }
+.form-card-body .ghl-form-wrap { max-width: 100% !important; }
+
+.form-card-body label,
+.form-card-body .field-label {
+  color: var(--off-white) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+}
+
+.form-card-body input[type=text],
+.form-card-body input[type=email],
+.form-card-body input[type=tel],
+.form-card-body input[type=number],
+.form-card-body .form-control {
+  background: var(--navy-2) !important;
+  color: var(--off-white) !important;
+  border: 1px solid rgba(34,120,172,0.25) !important;
+  border-radius: var(--r-md) !important;
+  padding: 13px 16px !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  width: 100% !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.form-card-body input:focus,
+.form-card-body input[type=email]:focus,
+.form-card-body input[type=tel]:focus,
+.form-card-body .form-control:focus {
+  border-color: rgba(56,153,204,0.6) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(34,120,172,0.1) !important;
+}
+
+.form-card-body ::placeholder { color: var(--faint) !important; font-size: 13px !important; }
+
+.form-card-body .payment-outlayer { background: transparent !important; }
+
+.form-card-body .product-container {
+  background: var(--navy-2) !important;
+  border: 1px solid rgba(34,120,172,0.2) !important;
+  border-radius: var(--r-md) !important;
+  padding: 16px !important;
+}
+
+.form-card-body .product-summary-label-large,
+.form-card-body .product-summary-label-normal {
+  color: var(--off-white) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+}
+
+.form-card-body .product-summary-amount-large {
+  color: var(--steel-light) !important;
+  font-family: var(--font-display) !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+.form-card-body .payment-info-container {
+  background: var(--navy-2) !important;
+  border: 1px solid rgba(34,120,172,0.2) !important;
+  border-radius: var(--r-md) !important;
+}
+
+.form-card-body .footer-payment {
+  color: var(--faint) !important;
+  font-size: 12px !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+}
+
+.form-card-body button[type=submit],
+.form-card-body .form-builder--btn-submit button {
+  background: var(--steel-mid) !important;
+  color: var(--white) !important;
+  border: none !important;
+  border-radius: var(--r-full) !important;
+  padding: 16px 36px !important;
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  cursor: pointer !important;
+  transition: all 0.22s ease !important;
+  box-shadow: 0 0 30px rgba(34,120,172,0.3) !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  text-align: center !important;
+}
+
+.form-card-body button[type=submit]:hover,
+.form-card-body .form-builder--btn-submit button:hover {
+  background: var(--steel-light) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 50px rgba(56,153,204,0.45) !important;
+}
+
+/* guarantee styles below */
+
+/* ── SECTIONS ── */
+.section { padding: 80px 0; }
+.section--dark  { background: var(--navy); }
+.section--mid   { background: var(--navy-2); }
+
+.section__header { text-align: center; margin-bottom: 52px; }
+.section__header .eyebrow-label { display: block; margin-bottom: 10px; }
+
+.section__header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.section__header p {
+  font-size: 19px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Photo testimonials */
+.tgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tcard {
+  background: var(--navy-3);
+  border: 1px solid rgba(34,120,172,0.13);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.tcard:hover { transform: translateY(-5px); border-color: rgba(34,120,172,0.3); }
+
+.tcard__img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+
+.tcard__img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  transition: transform 0.4s;
+}
+
+.tcard:hover .tcard__img img { transform: scale(1.04); }
+
+.tcard__body { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+.tcard__stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
+
+.tcard__quote {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--off-white);
+  line-height: 1.55;
+  font-style: italic;
+  flex: 1;
+}
+
+.tcard__result {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  background: rgba(61,214,140,0.08);
+  border: 1px solid rgba(61,214,140,0.2);
+  border-radius: var(--r-full);
+  font-size: 12px; font-weight: 600; color: var(--success); width: fit-content;
+}
+
+.tcard__author { font-size: 12px; color: var(--muted); padding-top: 10px; border-top: 1px solid rgba(34,120,172,0.12); }
+.tcard__author strong { color: var(--off-white); display: block; font-weight: 600; }
+
+/* Video */
+.vgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+.vcard {
+  background: var(--navy-3);
+  border: 1px solid rgba(34,120,172,0.15);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.vcard:hover { transform: translateY(-4px); border-color: rgba(34,120,172,0.35); }
+
+.vcard__embed { position: relative; width: 100%; aspect-ratio: 16/9; }
+.vcard__embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
+
+.vcard__caption {
+  padding: 14px 18px;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--off-white);
+  font-style: italic;
+  line-height: 1.5;
+  border-top: 1px solid rgba(34,120,172,0.12);
+}
+
+/* ── FINAL CTA ── */
+.cta-section {
+  padding: 100px 0;
+  position: relative; overflow: hidden; text-align: center;
+  background: var(--navy);
+}
+
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(26,95,138,0.2) 0%, transparent 70%);
+}
+
+.cta-section::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(34,120,172,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,120,172,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 32px; }
+
+.cta-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 7rem);
+  color: var(--white);
+  margin: 12px 0 20px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.cta-inner p { font-size: 17px; color: var(--muted); font-weight: 300; line-height: 1.65; margin-bottom: 32px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 700; font-size: 15px;
+  letter-spacing: 0.04em; border-radius: var(--r-full); border: none;
+  cursor: pointer; transition: all 0.22s ease; text-decoration: none;
 }
 
 .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  border-radius: var(--r-full);
-  border: none;
-  cursor: pointer;
-  transition: all 0.22s ease;
-  text-decoration: none;
-  white-space: nowrap;
   background: var(--steel-mid);
   color: var(--white);
   padding: 16px 40px;
@@ -480,14 +531,13 @@ nav.scrolled {
   box-shadow: 0 0 50px rgba(56,153,204,0.45);
 }
 
-/* ── FOOTER ──────────────────────────────────────────── */
+/* ── FOOTER ── */
 footer {
   background: var(--navy-2);
   border-top: 1px solid rgba(34,120,172,0.15);
   padding: 56px 32px 36px;
-  position: relative;
-  z-index: 1;
 }
+
 .footer__inner {
   max-width: 1120px;
   margin: 0 auto 40px;
@@ -496,6 +546,7 @@ footer {
   justify-content: space-between;
   gap: 40px;
 }
+
 .footer-brand__tagline {
   font-family: var(--font-serif);
   font-style: italic;
@@ -503,23 +554,28 @@ footer {
   color: var(--faint);
   margin-top: 12px;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
   gap: 28px;
   flex-wrap: nowrap;
 }
+
 .footer-links a {
   font-size: 13px;
   color: var(--muted);
   transition: color 0.2s;
 }
+
 .footer-links a:hover { color: var(--white); }
+
 .footer-socials {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
 }
+
 .social-icon {
   width: 38px; height: 38px;
   border-radius: 50%;
@@ -531,11 +587,13 @@ footer {
   color: var(--muted);
   transition: all 0.2s;
 }
+
 .social-icon:hover {
   background: var(--steel-glow);
   border-color: var(--steel-light);
   color: var(--steel-light);
 }
+
 .footer__bottom {
   max-width: 1120px;
   margin: 0 auto;
@@ -544,116 +602,311 @@ footer {
   display: flex;
   justify-content: center;
 }
+
 .footer__copy { font-size: 13px; color: var(--faint); }
 
-@media (max-width: 960px) {
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 760px) {
+  .tgrid { grid-template-columns: 1fr; }
+  .vgrid { grid-template-columns: 1fr; }
+  nav { padding: 12px 20px; }
+  .form-card-header, .form-card-body { padding-left: 24px; padding-right: 24px; }
+  .guarantee-inner { flex-direction: column; text-align: center; padding: 28px 24px; }
+  .form-wrap { padding: 0 20px; }
+  .container { padding: 0 20px; }
+  .page-header-inner { padding: 0 20px; }
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 24px; }
   .footer-links { justify-content: flex-start; flex-wrap: wrap; gap: 16px; }
   .footer-socials { justify-content: flex-start; }
 }
 
-@media (max-width: 600px) {
-  .confirm-card {
-    padding: 40px 24px;
-    border-radius: 20px;
-  }
-  nav { padding: 36px 20px; }
-  footer { padding: 40px 20px 28px; }
-  .footer__copy { text-align: center; }
-  .footer__bottom { justify-content: center; }
+/* GUARANTEE */
+.guarantee-section{background:var(--navy);padding:60px 0;}
+.guarantee-inner{max-width:680px;margin:0 auto;padding:36px 40px;display:flex;gap:28px;align-items:center;background:rgba(61,214,140,0.05);border:1px solid rgba(61,214,140,0.2);border-radius:var(--r-lg);}
+.guarantee-icon{font-size:52px;flex-shrink:0;line-height:1;}
+.guarantee-text h2{font-family:var(--font-display);font-size:2.2rem;color:var(--success);letter-spacing:0.02em;line-height:1;margin-bottom:10px;}
+.guarantee-text p{font-size:15px;color:var(--muted);line-height:1.7;font-weight:300;}
+/* SECTIONS */
+.section{padding:80px 0;}
+.section--dark{background:var(--navy);}
+.section--mid{background:var(--navy-2);}
+.section__header{text-align:center;margin-bottom:52px;}
+.section__header .eyebrow-label{display:block;margin-bottom:10px;}
+.section__header h2{font-family:var(--font-display);font-size:clamp(2.8rem,4.5vw,5rem);color:var(--white);letter-spacing:0.02em;margin-bottom:16px;}
+.section__header p{font-size:19px;color:var(--muted);font-weight:300;line-height:1.7;max-width:560px;margin:0 auto;}
+/* PHOTO TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tcard{background:var(--navy-3);border:1px solid rgba(34,120,172,0.13);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.25s,border-color 0.25s;}
+.tcard:hover{transform:translateY(-5px);border-color:rgba(34,120,172,0.3);}
+.tcard__img{width:100%;aspect-ratio:4/3;overflow:hidden;}
+.tcard__img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 0.4s;}
+.tcard:hover .tcard__img img{transform:scale(1.04);}
+.tcard__body{padding:20px 22px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.tcard__stars{color:var(--gold);font-size:13px;letter-spacing:2px;}
+.tcard__quote{font-family:var(--font-serif);font-size:0.95rem;color:var(--off-white);line-height:1.6;font-style:italic;flex:1;}
+.tcard__result{display:flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(61,214,140,0.08);border:1px solid rgba(61,214,140,0.2);border-radius:var(--r-full);font-size:12px;font-weight:600;color:var(--success);width:fit-content;}
+.tcard__author{font-size:13px;color:var(--muted);padding-top:10px;border-top:1px solid rgba(34,120,172,0.12);}
+.tcard__author strong{color:var(--off-white);display:block;font-weight:600;}
+/* VIDEO */
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.vcard{background:var(--navy-3);border:1px solid rgba(34,120,172,0.15);border-radius:var(--r-lg);overflow:hidden;transition:transform 0.25s,border-color 0.25s;}
+.vcard:hover{transform:translateY(-4px);border-color:rgba(34,120,172,0.35);}
+.vcard__embed{position:relative;width:100%;aspect-ratio:16/9;}
+.vcard__embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
+.vcard__caption{padding:14px 18px;font-family:var(--font-serif);font-size:15px;color:var(--off-white);font-style:italic;line-height:1.5;border-top:1px solid rgba(34,120,172,0.12);}
+/* FINAL CTA */
+.cta-section{padding:100px 0;position:relative;overflow:hidden;text-align:center;background:var(--navy);}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(26,95,138,0.2) 0%,transparent 70%);}
+.cta-section::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(34,120,172,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(34,120,172,0.06) 1px,transparent 1px);background-size:60px 60px;}
+.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 32px;}
+.cta-inner h2{font-family:var(--font-display);font-size:clamp(3.5rem,6vw,7rem);color:var(--white);margin:12px 0 20px;line-height:1;letter-spacing:0.02em;}
+.cta-inner p{font-size:17px;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:32px;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:15px;letter-spacing:0.04em;border-radius:var(--r-full);border:none;cursor:pointer;transition:all 0.22s ease;text-decoration:none;}
+.btn-primary{background:var(--steel-mid);color:var(--white);padding:16px 40px;box-shadow:0 0 30px rgba(34,120,172,0.3);}
+.btn-primary:hover{background:var(--steel-light);transform:translateY(-2px);box-shadow:0 0 50px rgba(56,153,204,0.45);}
+/* TABLET */
+@media(max-width:960px){.tgrid{grid-template-columns:1fr 1fr;}}
+/* MOBILE */
+@media(max-width:640px){
+  body{font-size:16px;}
+  nav{padding:28px 20px 16px;}
+  nav.scrolled{padding:16px 20px;}
+  .page-header{padding:120px 0 48px;}
+  .page-header-inner{padding:0 20px;}
+  .page-header h1{font-size:clamp(2rem,8.5vw,2.8rem);}
+  .page-header-sub{font-size:16px;}
+  .container{padding:0 20px;}
+  .form-wrap{padding:0 16px;}
+  .form-card-header{padding:28px 24px 20px;}
+  .form-card-body{padding:24px 24px 28px;}
+  .form-card-title{font-size:1.9rem;}
+  .guarantee-section{padding:48px 0;}
+  .guarantee-inner{flex-direction:column;text-align:center;padding:28px 24px;gap:16px;}
+  .guarantee-icon{font-size:40px;}
+  .guarantee-text h2{font-size:1.8rem;}
+  .section{padding:56px 0;}
+  .section__header{margin-bottom:36px;}
+  .section__header h2{font-size:clamp(2.2rem,7vw,3.2rem);}
+  .tgrid{grid-template-columns:1fr;}
+  .vgrid{grid-template-columns:1fr;}
+  .cta-section{padding:72px 0;}
+  .cta-inner{padding:0 20px;}
+  .cta-inner h2{font-size:clamp(2.8rem,9vw,4.5rem);}
+  .btn-primary{width:100%;justify-content:center;}
+  .footer__inner{flex-direction:column;align-items:flex-start;gap:24px;}
+  .footer-links{flex-wrap:wrap;gap:16px;}
+  .footer-socials{justify-content:flex-start;}
 }
+
 </style>
 </head>
 <body>
 
-<div class="page-bg"></div>
-<div class="glow-orb"></div>
-
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">
-    <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard" style="height:24px;width:auto;display:block;">
+    <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard">
   </div>
 </nav>
 
-<!-- MAIN -->
-<div class="page-wrapper">
-
-  <div class="confirm-card">
-
-    <!-- Success badge -->
-    <div class="success-badge">
-      <span class="success-badge__dot"></span>
-      Registration Confirmed
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">
+      <span class="line"></span>
+      <span class="eyebrow-label">21 Day Challenge</span>
+      <span class="line"></span>
     </div>
-
-    <!-- Emoji -->
-    <span class="confirm-emoji">🎉</span>
-
-    <!-- Label -->
-    <p class="confirm-label">21 Day Lean &amp; Strong Challenge</p>
-
-    <!-- Headline -->
-    <h1 class="confirm-h1">
-      You're
-      <span class="accent">Officially In!</span>
+    <h1>
+      You're One Step Closer to Feeling
+      <span class="accent">Lean &amp; Strong in the Next 21 Days</span>
     </h1>
-    <h2 class="confirm-h2">Welcome to Strong Standard</h2>
-
-    <!-- Sub -->
-    <p class="confirm-sub">
-      Your spot is confirmed. Get ready to build
-      <strong>real habits, real strength,</strong> and real results
-      over the next 21 days.
+    <p class="page-header-sub">
+      Join hundreds who have transformed their bodies with our proven system.
     </p>
+    <p class="page-header-phone">
+      Have questions or need assistance? Text us at <a href="tel:+18136862306">+1 (813) 686-2306</a> and we'll be happy to help.
+    </p>
+  </div>
+</section>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
-    
+<!-- FORM SECTION -->
+<section class="form-section" id="checkout">
+  <div class="form-wrap">
+    <div class="form-card reveal">
 
-    <!-- Next steps -->
-    <div class="next-steps">
-      <p class="next-steps__title">What Happens Next</p>
-      <div class="step-item">
-        <div class="step-item__num">1</div>
-        <div class="step-item__text">
-          <strong>Check your email inbox</strong>
-          You'll receive an invite with instructions to download our coaching app and get access to everything you need to start.
+      <div class="form-card-header">
+
+        <div class="form-card-title">Complete Your Registration</div>
+        <p class="form-card-sub">
+          We only have <strong>60 spots total</strong>, so don't wait to join!
+        </p>
+        <div class="spots-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--steel-light)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <strong>60 spots</strong> &nbsp;· Limited availability
         </div>
       </div>
-      <div class="step-item">
-        <div class="step-item__num">2</div>
-        <div class="step-item__text">
-          <strong>Log in and complete your onboarding tasks</strong>
-          Fill out your intake, complete the onboarding steps, and introduce yourself to our coaches and community.
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item__num">3</div>
-        <div class="step-item__text">
-          <strong>Your training and nutrition plan is on its way</strong>
-          Once assigned, review your plan and get ready for Day 1. In the meantime, jump into the community, ask questions, and get to know your fellow challengers.
+
+      <div class="form-card-body">
+        <div class="hl-app">
+          <section id="form-builder" style="margin:0;padding:0;">
+            <div class="ghl-form-wrap" style="max-width:100%;margin-bottom:0;">
+              <div id="_builder-form" style="background-color:#FFFFFFFF;max-width:600px;width:100%;padding:20px 0;" name="builder-form" class="form-builder--wrap-full form-builder--wrap">
+                <div class="flex items-center" style="gap:0;">
+                  <div class="form-side" style="width:100%;">
+                    <div class="flex-col row fields-container remove-extra-padding">
+
+                      <div style="margin-bottom:16px;" class="col-12 form-field-wrapper">
+                        <div class="f-odd form-field-container">
+                          <div><div class="field-container">
+                            <div id="form-first_name" class="form-builder--item">
+                              <label class="label-alignment field-label" for="first_name">First Name <span>*</span></label>
+                              <div class="flex-col"><input type="text" placeholder="First Name" name="first_name" class="form-control" id="first_name" data-q="first_name" data-required="true"></div>
+                            </div>
+                          </div></div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:16px;" class="col-12 form-field-wrapper">
+                        <div class="f-even form-field-container">
+                          <div><div class="field-container">
+                            <div id="form-last_name" class="form-builder--item">
+                              <label class="label-alignment field-label" for="last_name">Last Name <span>*</span></label>
+                              <div class="flex-col"><input type="text" placeholder="Last Name" name="last_name" class="form-control" id="last_name" data-q="last_name" data-required="true"></div>
+                            </div>
+                          </div></div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:16px;" class="col-12 form-field-wrapper">
+                        <div class="f-odd form-field-container">
+                          <div class="form-builder--item field-container">
+                            <label class="label-alignment" for="email">Email <span>*</span></label>
+                            <div class="flex-col">
+                              <div class="flex email-input">
+                                <input placeholder="Email" name="email" type="email" class="form-control" data-q="email" data-required="true" id="email">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:16px;" class="col-12 form-field-wrapper">
+                        <div class="f-even form-field-container">
+                          <div><div class="field-container">
+                            <div id="form-phone" class="form-builder--item">
+                              <label class="label-alignment field-label" for="phone">Phone <span>*</span></label>
+                              <div class="flex-col">
+                                <div class="flex phone-input">
+                                  <input type="tel" name="phone" placeholder="Phone" autocomplete="off" class="form-control" id="phone" data-q="phone" data-required="true">
+                                </div>
+                              </div>
+                            </div>
+                          </div></div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:16px;" class="col-12 payment-block form-field-wrapper">
+                        <div class="f-odd form-field-container">
+                          <div id="payment" class="payment-outlayer">
+                            <label class="label-alignment field-label">Select the product <span>*</span></label>
+                            <section class="product-layout" style="active-tag-bg-color:009EF426;bg-color:FFFFFFFF;font-color:2c3345FF;label-alignment:top;label-color:2c3345FF;label-font-family:Inter;label-font-size:14;label-font-weight:500;label-width:200;placeholder-color:8c8c8cFF;placeholder-font-family:Inter;placeholder-font-size:12;placeholder-font-weight:300;width:900;">
+                              <div class="product-container">
+                                <div class="product-checkbox">
+                                  <input id="69b5a1fea48ec40831f9ff64" name="69b5a1fea48ec40831f9ff64" value="69b5a1fea48ec40831f9ff64" disabled type="radio">
+                                </div>
+                                <div class="product-inner-container">
+                                  <div class="product-text-container">
+                                    <div class="product-no-image-gap product-stretch">
+                                      <div class="product-text-divider">
+                                        <label class="product-summary-label-large">21 Day Lean &amp; Strong Challenge ($147)</label>
+                                      </div>
+                                      <div class="product-price-container">
+                                        <div class="product-summary-amount-large">$147</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
+                            <div id="error-container" class="error coupon-error"></div>
+                            <section id="payment-gateway" class="payment-layer">
+                              <div class="ghl-payment-element">
+                                <div></div>
+                                <span>
+                                  <div id="paypal-form-payment-966630be-3a7b-4de8-b48d-26db93e0ec0f"><span></span></div>
+                                </span>
+                              </div>
+                            </section>
+                            <div class="footer-payment">*100% secure &amp; safe payments*</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:16px;" class="col-12 form-field-wrapper">
+                        <div class="f-even form-field-container">
+                          <div class="form-builder--item form-builder--btn-submit" style="text-align:center;margin-top:8px;">
+                            <div style="display:inline-block;position:relative;width:100%;">
+                              <button type="submit" class="btn btn-dark button-element" style="background-color:#2278ACFF;border:none;border-radius:9999px;padding:16px 36px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#FFFFFF;letter-spacing:0.04em;">
+                                Confirm Purchase
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="display:none;" class="col-12"><input type="text" name="kzaf5gbRanpXnhw6Cphj" class="form-control" id="kzaf5gbRanpXnhw6Cphj" data-q="utm_source" data-required="false"></div>
+                      <div style="display:none;" class="col-12"><input type="text" name="ac9iF4Ubgl3SPPfNUU37" class="form-control" id="ac9iF4Ubgl3SPPfNUU37" data-q="utm_medium" data-required="false"></div>
+                      <div style="display:none;" class="col-12"><input type="text" name="cDUtCD4IZNPQZowiky4c" class="form-control" id="cDUtCD4IZNPQZowiky4c" data-q="utm_content" data-required="false"></div>
+
+                      <div class="col-12" style="margin-top:8px;">
+                        <p style="text-align:center;font-size:12px;color:var(--faint);line-height:1.6;">
+                          <a href="https://fit4lifeacademy.health/privacy-policy-21-day-challenge" target="_blank" style="color:var(--muted);text-decoration:underline;">Privacy Policy</a>
+                          &nbsp;|&nbsp;
+                          <a href="https://www.fit4lifeacademy.health/terms-of-service-challenge" target="_blank" style="color:var(--muted);text-decoration:underline;">Terms of Service</a>
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Email callout -->
-    <div class="email-callout">
-      <div class="email-callout__icon">📬</div>
-      <div class="email-callout__text">
-        <strong>Didn't receive your confirmation email?</strong> Check your spam folder or reach out to us at <a href="mailto:support@strongstandard.com">support@strongstandard.com</a> and we'll get you sorted right away.
+
+
+<div class="divider"></div>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-icon">&#128737;&#65039;</div>
+      <div class="guarantee-text">
+        <h2>If You're Unhappy, We'll Give You Your Money Back</h2>
+        <p>We're confident this program will help you see real results. But if, after 21 days, you're not completely satisfied for any reason, we'll refund your investment. No questions asked. You truly have nothing to lose and everything to gain.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    
-
-  </div><!-- end confirm-card -->
-
-</div><!-- end page-wrapper -->
-
-<!-- ═══════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer__inner">
     <div class="footer-brand">
@@ -661,9 +914,9 @@ footer {
       <p class="footer-brand__tagline">Strength is not the goal. It is the standard.</p>
     </div>
     <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Contact</a>
+      <a href="https://fit4lifeacademy.health/privacy-policy-21-day-challenge" target="_blank">Privacy Policy</a>
+      <a href="https://www.fit4lifeacademy.health/terms-of-service-challenge" target="_blank">Terms of Service</a>
+      <a href="mailto:support@strongstandard.com">Contact</a>
     </div>
     <div class="footer-socials">
       <a href="#" class="social-icon" aria-label="Instagram">
@@ -685,8 +938,16 @@ footer {
 <script>
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
