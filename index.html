@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kickoff Call Registration | Lean & Strong 21 Day Challenge</title>
-<meta name="description" content="Register for the Lean & Strong 21 Day Challenge Kickoff Call. Saturday, March 28, 2026 at 10:00 AM EST.">
+<title>Terms of Service | Strong Standard Coaching</title>
+<meta name="description" content="Terms of Service for the Shred the New Year 21-Day Challenge by Dr. Joey's Team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -14,245 +14,220 @@
   --navy:        #080D1A;
   --navy-2:      #0D1526;
   --navy-3:      #111C30;
-  --navy-4:      #17243B;
   --steel:       #1A5F8A;
   --steel-mid:   #2278AC;
   --steel-light: #3899CC;
   --steel-glow:  rgba(34, 120, 172, 0.18);
-  --ice:         #A8CDE0;
   --white:       #FFFFFF;
   --off-white:   #EEF3F7;
   --muted:       #8A9BB0;
   --faint:       #4A5A6E;
-  --gold:        #C8A96E;
-  --success:     #3DD68C;
 
   --font-display: 'Bebas Neue', sans-serif;
-  --font-serif:   'DM Serif Display', serif;
   --font-body:    'DM Sans', sans-serif;
 
   --r-full: 9999px;
-  --r-lg:   20px;
-  --r-md:   12px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
   background: var(--navy);
   color: var(--off-white);
   overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  line-height: 1.6;
+  font-size: 17px;
 }
 
-img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
-/* ── PAGE BACKGROUND ─────────────────────────────────── */
-.page-bg {
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
   position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.page-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(34,120,172,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,120,172,0.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.page-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,95,138,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(26,95,138,0.1) 0%, transparent 60%);
-}
-
-/* ── LAYOUT ──────────────────────────────────────────── */
-.page-wrap {
-  position: relative;
-  z-index: 1;
-  flex: 1;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 32px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 60px 20px 48px;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(8,13,26,0.98) 0%, rgba(8,13,26,0) 100%);
+  transition: background 0.3s, padding 0.3s;
 }
 
-/* ── LOGO (main) ─────────────────────────────────────── */
-.logo-wrap {
-  margin-bottom: 40px;
-  text-align: center;
+nav.scrolled {
+  background: rgba(8,13,26,0.97);
+  border-bottom: 1px solid rgba(34,120,172,0.2);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  padding: 14px 32px;
 }
-.logo-wrap img {
-  height: 40px;
+
+.nav-logo img {
+  height: 24px;
   width: auto;
-  margin: 0 auto;
+  display: block;
 }
 
-/* ── CARD ────────────────────────────────────────────── */
-.card {
-  background: var(--navy-2);
-  border: 1px solid rgba(34,120,172,0.2);
-  border-radius: var(--r-lg);
-  width: 100%;
-  max-width: 560px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 40px rgba(34,120,172,0.08);
-}
-.card__top-accent {
-  height: 3px;
-  background: linear-gradient(90deg, var(--steel), var(--steel-light));
-}
-.card__body {
-  padding: 44px 48px 48px;
-  font-size: 15px;
-}
-
-/* ── EYEBROW ─────────────────────────────────────────── */
-.eyebrow {
-  display: flex;
+.nav-cta {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.eyebrow__line {
-  width: 32px;
-  height: 1px;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--white);
   background: var(--steel-mid);
-  flex-shrink: 0;
+  border: none;
+  border-radius: var(--r-full);
+  padding: 12px 28px;
+  box-shadow: 0 0 30px rgba(34,120,172,0.3);
+  transition: all 0.22s ease;
 }
-.eyebrow__text {
+
+.nav-cta:hover {
+  background: var(--steel-light);
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(56,153,204,0.45);
+}
+
+/* ── PAGE WRAPPER ────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  padding: 160px 32px 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 720px;
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────── */
+.page-header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(34,120,172,0.2);
+}
+
+.page-eyebrow {
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--steel-light);
-  text-align: center;
-}
-
-/* ── HEADING ─────────────────────────────────────────── */
-.card__title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 4.5rem);
-  color: var(--white);
-  text-align: center;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
-}
-.card__subtitle {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  color: var(--steel-light);
-  text-align: center;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  margin-bottom: 28px;
-}
-
-/* ── DATE BADGE ──────────────────────────────────────── */
-.date-badge {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(34,120,172,0.1);
-  border: 1px solid rgba(34,120,172,0.25);
-  border-radius: var(--r-full);
-  padding: 10px 22px;
-  margin: 0 auto 32px;
-  width: fit-content;
+  gap: 12px;
+  margin-bottom: 20px;
 }
-.date-badge__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--steel-light);
-  flex-shrink: 0;
-  animation: pulse 2s infinite;
+
+.page-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--steel-mid);
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
 }
-.date-badge__text {
+
+.page-meta {
   font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── SECTIONS ────────────────────────────────────────── */
+.tos-section {
+  margin-bottom: 40px;
+}
+
+.tos-section + .tos-section {
+  padding-top: 40px;
+  border-top: 1px solid rgba(34,120,172,0.1);
+}
+
+.tos-section h2 {
+  font-family: var(--font-body);
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  margin-bottom: 16px;
+}
+
+.tos-section p,
+.tos-section li {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.tos-section p strong {
   color: var(--off-white);
-  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.tos-section p + p {
+  margin-top: 12px;
+}
+
+.tos-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.tos-section ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.tos-section ul li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--steel-light);
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.tos-section a {
+  color: var(--steel-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tos-section a:hover {
+  color: var(--white);
 }
 
 /* ── DIVIDER ─────────────────────────────────────────── */
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(34,120,172,0.3), transparent);
-  margin-bottom: 32px;
-}
-
-/* ── FORM EMBED ZONE ─────────────────────────────────── */
-.form-zone {
-  background: var(--navy-3);
-  border: 1px dashed rgba(34,120,172,0.3);
-  border-radius: var(--r-md);
-  padding: 32px 24px;
-  text-align: center;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-/*
-  ─────────────────────────────────────────────────────
-  PASTE YOUR GHL FORM EMBED BELOW.
-  Remove .form-zone__placeholder once the form is live.
-  ─────────────────────────────────────────────────────
-*/
-.form-zone__placeholder {
-  font-size: 13px;
-  color: var(--faint);
-  letter-spacing: 0.04em;
-}
-.form-zone__placeholder strong {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(34,120,172,0.5);
-  margin-bottom: 6px;
-}
-
-/* ── DISCLAIMER ──────────────────────────────────────── */
-.disclaimer {
-  text-align: center;
-  font-size: 12px;
-  color: var(--faint);
-  font-style: italic;
-  margin-top: 20px;
-  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 /* ── FOOTER ──────────────────────────────────────────── */
 footer {
-  position: relative;
-  z-index: 1;
   background: var(--navy-2);
   border-top: 1px solid rgba(34,120,172,0.15);
   padding: 56px 32px 36px;
@@ -266,7 +241,7 @@ footer {
   gap: 40px;
 }
 .footer-brand__tagline {
-  font-family: var(--font-serif);
+  font-family: 'DM Serif Display', serif;
   font-style: italic;
   font-size: 0.95rem;
   color: var(--faint);
@@ -290,8 +265,7 @@ footer {
   gap: 16px;
 }
 .social-icon {
-  width: 38px;
-  height: 38px;
+  width: 38px; height: 38px;
   border-radius: 50%;
   background: rgba(34,120,172,0.1);
   border: 1px solid rgba(34,120,172,0.2);
@@ -316,120 +290,142 @@ footer {
 }
 .footer__copy { font-size: 13px; color: var(--faint); }
 
-
-/* ── DATE BADGE MOBILE ───────────────────────────────── */
-@media (max-width: 480px) {
-  .date-badge {
-    border-radius: var(--r-lg);
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 20px;
-  }
-  .date-badge__dot { display: none; }
-  .date-badge__text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-  .date-sep { display: none; }
-  .date-line1, .date-line2 { display: block; text-align: center; }
-}
-
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 960px) {
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 24px; }
   .footer-links { justify-content: flex-start; flex-wrap: wrap; gap: 16px; }
   .footer-socials { justify-content: flex-start; }
 }
-@media (max-width: 600px) {
-  .card__body { padding: 36px 28px 40px; }
-  .footer { padding: 40px 20px 28px; }
-  .footer__copy { text-align: center; }
+@media (max-width: 640px) {
+  nav { padding: 14px 20px; }
+  .page { padding: 100px 20px 72px; }
+  .page-title { font-size: clamp(2.8rem, 10vw, 4rem); }
+  .tos-section p,
+  .tos-section li { font-size: 16px; }
+  .footer__inner { padding: 0 4px; }
+  .footer__copy { text-align: center; width: 100%; }
   .footer__bottom { justify-content: center; }
+  .footer-links { gap: 12px; flex-wrap: wrap; }
 }
 </style>
 </head>
 <body>
 
-<!-- Background grid + glow -->
-<div class="page-bg"></div>
-
-<!-- ══════════════════════════════════════════════
-     MAIN
-══════════════════════════════════════════════ -->
-<main class="page-wrap">
-
-  <!-- Logo -->
-  <div class="logo-wrap">
-    <img
-      src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png"
-      alt="Strong Standard">
+<!-- ═══ NAV ═══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard" style="height:24px;width:auto;display:block;">
   </div>
+  <a href="#" class="nav-cta">Apply Now
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</nav>
 
-  <!-- Registration card -->
-  <div class="card">
-    <div class="card__top-accent"></div>
-    <div class="card__body">
+<!-- ═══ CONTENT ═══════════════════════════════════════ -->
+<div class="page">
+  <div class="content">
 
-      <!-- Eyebrow -->
-      <div class="eyebrow">
-        <span class="eyebrow__line"></span>
-        <span class="eyebrow__text">Lean &amp; Strong 21 Day Challenge</span>
-        <span class="eyebrow__line"></span>
-      </div>
-
-      <!-- Heading -->
-      <h1 class="card__title">Kickoff Call</h1>
-      <p class="card__subtitle">Registration</p>
-
-      <!-- Date badge -->
-      <div class="date-badge">
-        <span class="date-badge__dot"></span>
-        <span class="date-badge__text"><span class="date-line1">Saturday, March 28, 2026</span><span class="date-sep"> &nbsp;·&nbsp; </span><span class="date-line2">10:00 AM EST</span></span>
-      </div>
-
-      <!-- Divider -->
-      <div class="divider"></div>
-
-      <!-- GHL form embed zone -->
-      <div class="form-zone">
-
-        <!-- ════════════════════════════════════════
-             PASTE GHL FORM EMBED CODE HERE
-             Remove the placeholder div below once live
-        ════════════════════════════════════════ -->
-        <div class="form-zone__placeholder">
-          <strong>Form embed</strong>
-          Paste your GHL form embed code here
-        </div>
-
-      </div>
-
-      <!-- Disclaimer -->
-      <p class="disclaimer">We won't send spam. Unsubscribe at any time.</p>
-
+    <div class="page-header">
+      <div class="page-eyebrow">Legal</div>
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-meta">Effective Date: January 6, 2025</p>
     </div>
+
+    <p style="font-size:19px;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:48px;">
+      Welcome to the Lean & Strong 21-Day Challenge. By signing up or participating in this program, you agree to the following terms and conditions. Please read them carefully.
+    </p>
+
+    <!-- 1 -->
+    <div class="tos-section">
+      <h2>1. Eligibility</h2>
+      <p>The Challenge is open to individuals aged 18 or older. By registering, you confirm that you meet this eligibility requirement.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="tos-section">
+      <h2>2. Program Details</h2>
+      <ul>
+        <li>The Challenge includes fitness and nutrition guidance provided by Dr. Joey's Team.</li>
+        <li>Results may vary based on individual effort, adherence, and starting fitness level.</li>
+        <li>The program is not a substitute for professional medical advice. Always consult a healthcare provider before starting any fitness or nutrition program.</li>
+      </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="tos-section">
+      <h2>3. Payment and Refunds</h2>
+      <p>Payment is required in full at the time of registration.</p>
+      <p><strong>Refund Policy:</strong> If you are not satisfied with your experience after completing the full 21 days and adhering to the program, you may request a refund by contacting us at <a href="mailto:support@strongstandard.com">support@strongstandard.com</a> within 7 days of the Challenge's conclusion.</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="tos-section">
+      <h2>4. User Conduct</h2>
+      <p>Participants agree to:</p>
+      <ul>
+        <li>Follow the guidelines provided during the Challenge.</li>
+        <li>Refrain from sharing program materials with non-participants.</li>
+        <li>Act respectfully in all communications, including those within the private community.</li>
+      </ul>
+    </div>
+
+    <!-- 5 -->
+    <div class="tos-section">
+      <h2>5. Intellectual Property</h2>
+      <p>All materials provided as part of the Challenge, including but not limited to workout plans, meal guides, and educational resources, are the intellectual property of Dr. Joey's Team. Participants may use these materials for personal, non-commercial purposes only.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="tos-section">
+      <h2>6. Limitation of Liability</h2>
+      <p>Dr. Joey's Team and its coaches are not liable for:</p>
+      <ul>
+        <li>Injuries, health complications, or damages resulting from participation in the Challenge.</li>
+        <li>Outcomes that do not meet participant expectations.</li>
+      </ul>
+    </div>
+
+    <!-- 7 -->
+    <div class="tos-section">
+      <h2>7. Termination of Participation</h2>
+      <p>We reserve the right to terminate a participant's access to the Challenge if they violate these Terms or engage in behavior that disrupts the program or community.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="tos-section">
+      <h2>8. Changes to the Program</h2>
+      <p>We reserve the right to modify the Challenge content, schedule, or pricing at any time. Participants will be notified of significant changes.</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="tos-section">
+      <h2>9. Governing Law</h2>
+      <p>These Terms are governed by the laws of Florida, United States. Any disputes will be resolved in accordance with these laws.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="tos-section">
+      <h2>10. Contact Information</h2>
+      <p>For questions or concerns about these Terms, please contact us at:</p>
+      <p><a href="mailto:support@strongstandard.com">support@strongstandard.com</a></p>
+    </div>
+
   </div>
+</div>
 
-</main>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═══════════════════════════════════════ -->
 <footer>
   <div class="footer__inner">
     <div class="footer-brand">
-      <img
-        src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png"
-        alt="Strong Standard"
-        style="height:22px;width:auto;display:block;margin-bottom:8px;">
+      <img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de737801e07d5dde37fcc4.png" alt="Strong Standard" style="height:22px;width:auto;display:block;margin-bottom:8px;">
       <p class="footer-brand__tagline">Strength is not the goal. It is the standard.</p>
     </div>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
-      <a href="#">Contact</a>
+      <a href="mailto:support@strongstandard.com">Contact</a>
     </div>
     <div class="footer-socials">
       <a href="#" class="social-icon" aria-label="Instagram">
@@ -447,6 +443,13 @@ footer {
     <span class="footer__copy">Copyright 2026 Strong Standard Coaching. All rights reserved.</span>
   </div>
 </footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+</script>
 
 </body>
 </html>
