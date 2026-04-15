@@ -921,10 +921,14 @@ footer {
 }
 .carousel-dot.active { background: var(--steel-light); box-shadow: 0 0 6px rgba(56,153,204,0.6); }
 
+/* Hide mobile carousels on desktop by default */
+.vt-carousel-mobile { display: none; }
+.faq-carousel-mobile { display: none; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .expect__grid { grid-template-columns: 1fr; }
-  /* Hide grids on mobile, show carousels */
+  /* Hide desktop grids, show mobile carousels */
   .vt-grid { display: none; }
   .faq-cards__grid { display: none; }
   .vt-carousel-mobile { display: block; }
@@ -934,9 +938,6 @@ footer {
   .footer-links { justify-content: flex-start; flex-wrap: wrap; gap: 16px; }
   .footer-socials { justify-content: flex-start; }
 }
-/* Hide mobile carousels on desktop */
-.vt-carousel-mobile { display: none; }
-.faq-carousel-mobile { display: none; }
 
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
