@@ -1601,8 +1601,8 @@ footer {
   .container, .container--narrow, .container--tight { padding: 0 20px; }
   .section { padding: 64px 0; }
   .hero { padding: 100px 0 56px; }
-  /* Foto 1: H1 hero - 3 lines */
-  .hero h1 { font-size: clamp(2rem, 7.5vw, 2.6rem); }
+  /* Foto 1: H1 hero - force 3 lines */
+  .hero h1 { font-size: clamp(1.8rem, 6.5vw, 2.4rem); }
   /* Foto 1: hero subtitle - 3 lines */
   .hero__sub { font-size: 17px; }
   nav { padding: 14px 20px; }
@@ -1615,10 +1615,9 @@ footer {
   .quote-carousel__track { min-height: 240px; }
   /* Foto 2: problem pivot line break */
   .problem__pivot { font-size: 10px; }
-  /* Foto 8: sp-slide headline smaller on mobile */
+  /* Foto 8: sp-slide headline smaller, card auto height on mobile */
   .sp-slide__headline { font-size: 1.3rem; }
-  /* sp card fixed height on mobile */
-  .sp-slide__card { padding: 20px 16px; height: 220px; min-height: 220px; overflow: hidden; }
+  .sp-slide__card { padding: 20px 16px; height: auto; min-height: unset; overflow: visible; }
   .sp-slide__photos { grid-template-columns: 1fr 1fr; gap: 8px; }
   .sp-photo { height: 220px; }
   .staff-grid { grid-template-columns: 1fr 1fr; }
@@ -1635,12 +1634,15 @@ footer {
   .process__steps::before { left: 26px; }
   .founders-grid { gap: 16px; }
   .coach-card { padding: 24px 16px; }
+  .coach-card p { font-size: 15px; }
   .fit-panel__heading { font-size: 1.6rem; }
   .footer__inner { padding: 0 4px; }
   .footer__copy { text-align: center; }
   .footer__bottom { justify-content: center; }
   /* Foto 6: pillar accordion trigger font size larger */
   .pillar-accordion-trigger { font-size: 16px; padding: 22px 0; }
+  .pillar-accordion-body--inner p { font-size: 16px !important; line-height: 1.7; }
+  .pillar-accordion-body--inner { padding: 0 0 24px; }
   /* Foto 11: philosophy tagline line break handled via font-size */
   .philosophy-tagline { font-size: clamp(1.6rem, 5vw, 2.5rem); }
   /* Foto 9 & 12: micro-copy line break */
@@ -1978,7 +1980,7 @@ footer {
       <h2>The Three Pillars Behind Results That Actually Last.</h2>
     </div>
 
-    <p class="method__bridge reveal"><em>Most programs give you a plan. We give you a system.<br>Here is the difference.</em></p>
+    <p class="method__bridge reveal"><em>Most programs give you a plan. We give you a system.<br class="br-mobile">Here is the difference.</em></p>
 
     <!-- Pillar Cards (desktop) -->
     <div class="pillars__grid">
@@ -2767,7 +2769,7 @@ footer {
         <h2 style="font-size:clamp(2rem,3vw,3.5rem);">Ready to Build the Body<br>That Makes You Stronger<br>in Every Area of Your Life?</h2>
       </div>
 
-      <p class="app-cta__opening reveal"><em>The next step is simple and takes less than 3 minutes.</em></p>
+      <p class="app-cta__opening reveal"><em>The next step is simple<br class="br-mobile"> and takes less than 3 minutes.</em></p>
 
       <ol class="app-steps reveal">
         <li class="app-step">
