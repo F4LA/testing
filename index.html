@@ -133,6 +133,7 @@ a { text-decoration: none; color: inherit; }
   width: 32px;
   height: 1px;
   background: var(--steel-mid);
+  flex-shrink: 0;
 }
 .eyebrow__text {
   font-family: var(--font-body);
@@ -141,6 +142,7 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--steel-light);
+  text-align: center;
 }
 
 /* ── HEADING ─────────────────────────────────────────── */
@@ -314,6 +316,26 @@ footer {
 }
 .footer__copy { font-size: 13px; color: var(--faint); }
 
+
+/* ── DATE BADGE MOBILE ───────────────────────────────── */
+@media (max-width: 480px) {
+  .date-badge {
+    border-radius: var(--r-lg);
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 20px;
+  }
+  .date-badge__dot { display: none; }
+  .date-badge__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .date-sep { display: none; }
+  .date-line1, .date-line2 { display: block; text-align: center; }
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 960px) {
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -364,7 +386,7 @@ footer {
       <!-- Date badge -->
       <div class="date-badge">
         <span class="date-badge__dot"></span>
-        <span class="date-badge__text">Saturday, March 28, 2026 &nbsp;·&nbsp; 10:00 AM EST</span>
+        <span class="date-badge__text"><span class="date-line1">Saturday, March 28, 2026</span><span class="date-sep"> &nbsp;·&nbsp; </span><span class="date-line2">10:00 AM EST</span></span>
       </div>
 
       <!-- Divider -->
