@@ -1602,7 +1602,7 @@ footer {
   .section { padding: 64px 0; }
   .hero { padding: 100px 0 56px; }
   /* Foto 1: H1 hero - force 3 lines */
-  .hero h1 { font-size: clamp(1.4rem, 5.2vw, 1.9rem); }
+  .hero h1 { font-size: clamp(1.26rem, 4.7vw, 1.71rem); }
   /* Foto 1: hero subtitle - 3 lines */
   .hero__sub { font-size: 17px; }
   nav { padding: 14px 20px; }
@@ -1617,7 +1617,7 @@ footer {
   .problem__pivot { font-size: 10px; }
   /* Foto 8: sp-slide headline smaller, card auto height on mobile */
   .sp-slide__headline { font-size: 1.3rem; }
-  .sp-slide__card { padding: 20px 16px; }
+  .sp-slide__card { padding: 20px 16px; min-height: 320px; }
   .sp-slide__photos { grid-template-columns: 1fr 1fr; gap: 8px; }
   .sp-photo { height: 220px; }
   .staff-grid { grid-template-columns: 1fr 1fr; }
@@ -3042,17 +3042,6 @@ document.querySelectorAll('.pillar-accordion-trigger').forEach(trigger => {
   });
 });
 
-// ── Equalize slide card heights on mobile ──────────────
-function equalizeCardHeights() {
-  if (window.innerWidth > 640) return;
-  const cards = document.querySelectorAll('.sp-slide__card');
-  cards.forEach(c => { c.style.height = 'auto'; });
-  let maxH = 0;
-  cards.forEach(c => { maxH = Math.max(maxH, c.offsetHeight); });
-  cards.forEach(c => { c.style.height = maxH + 'px'; });
-}
-window.addEventListener('load', equalizeCardHeights);
-window.addEventListener('resize', equalizeCardHeights);
 const coachTrack = document.getElementById('coachTrack');
 const coachDots = document.querySelectorAll('.coach-carousel__dot');
 let coachActive = 0;
