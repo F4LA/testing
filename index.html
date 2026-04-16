@@ -1804,12 +1804,9 @@ footer {
   .cta-section__btns { flex-direction: column; align-items: center; }
   .cta-section__btns .btn { width: 100%; max-width: 360px; justify-content: center; }
   .process__steps::before { left: 26px; }
-  #coachGrid { display: grid; }
-  #coachGrid .coach-card { display: none; }
+  #coachGrid { display: none; }
   .coach-carousel { display: block; }
   .team-grid { grid-template-columns: 1fr; }
-  .founder-coach-card { grid-column: span 1; }
-  .founder-coach-card__avatar { width: 120px; height: 120px; }
   .founders-grid { grid-template-columns: 1fr; gap: 16px; }
   .founder-card { flex-direction: column; }
   .founder-card__photo { width: 100%; min-height: 220px; aspect-ratio: 4/3; }
@@ -2933,6 +2930,23 @@ footer {
     <div class="coach-carousel" id="coachCarousel">
       <div class="coach-carousel__inner">
         <div class="coach-carousel__track" id="coachTrack">
+          <!-- Joey -->
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69e11b0150b9a3263a54cd77.png" alt="Dr. Joey Munoz" style="object-position:50% 15%; transform: scale(1.15);"></div>
+            <div class="coach-card__degree">Ph.D. Nutritional Sciences, FSU</div>
+            <h4>Dr. Joey Munoz</h4>
+            <div class="coach-card__role">Founder and CEO</div>
+            <p>Dr. Joey holds a PhD in Nutritional Sciences from Florida State University and has spent his career translating complex nutrition and exercise science into practical systems that work for real people in real life. He built Strong Standard because he grew up in the same struggle his clients face, and he knew the missing piece was never motivation. It was the right system, the right education, and the right support. He is the coach he wished he had.</p>
+          </div>
+          <!-- Bernardo -->
+          <div class="coach-card">
+            <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69e11b010b562c7281204e18.png" alt="Bernardo Lopez" style="object-fit:cover; object-position:50% 15%; transform: scale(1.15);"></div>
+            <div class="coach-card__degree">M.S. Body Composition Improvement</div>
+            <h4>Bernardo Lopez</h4>
+            <div class="coach-card__role">Co-Founder and Head Coach</div>
+            <p>Bernardo holds a Master's in Body Composition and leads the coaching team at Strong Standard. He specializes in muscle building, fat loss, and performance optimization through an evidence-based approach. He has coached hundreds of clients through sustainable body composition transformations with a focus on habit formation and long-term consistency.</p>
+          </div>
+          <!-- Brent -->
           <div class="coach-card">
             <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de92d39ef76eebec5600fb.png" alt="Dr. Brent Momb" style="object-position:50% 20%;"></div>
             <div class="coach-card__degree">Ph.D. Muscle Biology</div>
@@ -2940,6 +2954,7 @@ footer {
             <div class="coach-card__role">Coach and Researcher</div>
             <p>Dr. Brent holds a Ph.D. in Muscle Biology from UMass and is an active postdoctoral researcher. He brings the latest science directly into his coaching, helping clients break through plateaus and build strength sustainably.</p>
           </div>
+          <!-- Ceci -->
           <div class="coach-card">
             <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de931bd8d5f6ae837c9b21.png" alt="Ceci Gonzalez" style="object-position:50% 15%;"></div>
             <div class="coach-card__degree">M.S. Body Composition</div>
@@ -2947,6 +2962,7 @@ footer {
             <div class="coach-card__role">Coach</div>
             <p>Ceci holds a Master's in Body Composition and is a certified personal trainer. A lifelong athlete and strength training enthusiast, she is known for her warm coaching style that makes fitness both effective and genuinely enjoyable.</p>
           </div>
+          <!-- Miguel -->
           <div class="coach-card">
             <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de93853d447256448daee5.png" alt="Miguel Mendes" style="object-position:50% 15%;"></div>
             <div class="coach-card__degree">M.S. Sport and Exercise Nutrition</div>
@@ -2954,6 +2970,7 @@ footer {
             <div class="coach-card__role">Coach</div>
             <p>Miguel is from Lisbon, Portugal and has been coaching for over 6 years. He holds a Master's in Sport and Exercise Nutrition and believes fitness should enhance your life, not consume it. It is about progress, not perfection.</p>
           </div>
+          <!-- Jackie -->
           <div class="coach-card">
             <div class="coach-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69de92fae7237c4dd30f36ad.png" alt="Jacqueline Llovet" style="object-position:50% 15%;"></div>
             <div class="coach-card__degree">Registered Nurse</div>
@@ -2972,6 +2989,8 @@ footer {
           <button class="coach-carousel__dot" data-c="1"></button>
           <button class="coach-carousel__dot" data-c="2"></button>
           <button class="coach-carousel__dot" data-c="3"></button>
+          <button class="coach-carousel__dot" data-c="4"></button>
+          <button class="coach-carousel__dot" data-c="5"></button>
         </div>
         <button class="coach-carousel__btn" id="coachNext">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
@@ -3396,7 +3415,7 @@ document.querySelectorAll('.pillar-accordion-trigger').forEach(trigger => {
 const coachTrack = document.getElementById('coachTrack');
 const coachDots = document.querySelectorAll('.coach-carousel__dot');
 let coachActive = 0;
-const coachTotal = 4;
+const coachTotal = 6;
 
 function goToCoach(n) {
   coachActive = (n + coachTotal) % coachTotal;
