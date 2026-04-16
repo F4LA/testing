@@ -260,6 +260,50 @@ nav.scrolled {
   text-align: left;
 }
 
+/* Proof card carousel for mobile */
+.hero-proof-carousel { display: none; position: relative; }
+.hero-proof-carousel__inner { overflow: hidden; border-radius: var(--r-lg); }
+.hero-proof-carousel__track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-proof-carousel__track .proof-card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.hero-proof-carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+.hero-proof-carousel__btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(34,120,172,0.3);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.hero-proof-carousel__btn:hover { border-color: var(--steel-light); color: var(--steel-light); }
+.hero-proof-carousel__dots { display: flex; gap: 8px; }
+.hero-proof-carousel__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--faint);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.hero-proof-carousel__dot.active { background: var(--steel-light); box-shadow: 0 0 8px rgba(56,153,204,0.6); }
+
 /* Trust bar — standalone strip, same as original homepage */
 .trust-bar {
   background: var(--navy-2);
@@ -1718,6 +1762,9 @@ footer {
   .hero h1 { font-size: clamp(2.33rem, 8.7vw, 3.15rem) !important; }
   /* Foto 1: hero subtitle - 3 lines */
   .hero__sub { font-size: 17px; }
+  .hero__cta-group .btn { font-size: 14px !important; padding: 14px 32px !important; }
+  .hero-proof-grid { display: none; }
+  .hero-proof-carousel { display: block; }
   nav { padding: 14px 20px; }
   .litmus { padding: 28px 20px; }
   .fit-panel { padding: 28px 20px; }
@@ -1872,6 +1919,66 @@ footer {
             </div>
           </div>
           <p class="proof-card__quote">"I feel stronger than I have in a very long time. The payoff has been huge."</p>
+        </div>
+      </div>
+
+      <!-- Proof cards carousel for mobile -->
+      <div class="hero-proof-carousel reveal" style="margin-top:48px;">
+        <div class="hero-proof-carousel__inner">
+          <div class="hero-proof-carousel__track">
+            <div class="proof-card">
+              <div class="proof-card__top">
+                <div class="proof-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69e10a462c135a8c8391be2f.png" alt="Penny E."></div>
+                <div class="proof-card__right">
+                  <div class="proof-card__stars">★★★★★</div>
+                  <div class="proof-card__meta">
+                    <div class="proof-card__result">Lost 10 lbs and 2 inches in 3 months</div>
+                    <div class="proof-card__name">Penny E.</div>
+                  </div>
+                </div>
+              </div>
+              <p class="proof-card__quote">"The best money we have ever spent as a family. I am a better wife, a better mother, and a better VP."</p>
+            </div>
+            <div class="proof-card">
+              <div class="proof-card__top">
+                <div class="proof-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69e10a120b562c72811b748b.png" alt="Nate W."></div>
+                <div class="proof-card__right">
+                  <div class="proof-card__stars">★★★★★</div>
+                  <div class="proof-card__meta">
+                    <div class="proof-card__result">Lost 25 lbs in 5 months while raising four kids</div>
+                    <div class="proof-card__name">Nate W.</div>
+                  </div>
+                </div>
+              </div>
+              <p class="proof-card__quote">"I feel like I am building a new life and an improved one. This has been life-changing."</p>
+            </div>
+            <div class="proof-card">
+              <div class="proof-card__top">
+                <div class="proof-card__avatar"><img src="https://assets.cdn.filesafe.space/cZF68TO3vzxTOnAdACdK/media/69e109ebc56ad279081f2494.png" alt="Randy S."></div>
+                <div class="proof-card__right">
+                  <div class="proof-card__stars">★★★★★</div>
+                  <div class="proof-card__meta">
+                    <div class="proof-card__result">Lost 60+ lbs and feels stronger than ever at 62</div>
+                    <div class="proof-card__name">Randy S.</div>
+                  </div>
+                </div>
+              </div>
+              <p class="proof-card__quote">"I feel stronger than I have in a very long time. The payoff has been huge."</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-proof-carousel__nav">
+          <button class="hero-proof-carousel__btn" id="proofPrev">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="hero-proof-carousel__dots">
+            <button class="hero-proof-carousel__dot active" data-proof="0"></button>
+            <button class="hero-proof-carousel__dot" data-proof="1"></button>
+            <button class="hero-proof-carousel__dot" data-proof="2"></button>
+          </div>
+          <button class="hero-proof-carousel__btn" id="proofNext">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
 
@@ -3158,6 +3265,32 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Proof Cards Carousel (mobile) ───────────────────────
+const proofTrack = document.querySelector('.hero-proof-carousel__track');
+const proofDots = document.querySelectorAll('.hero-proof-carousel__dot');
+let proofActive = 0;
+const proofTotal = 3;
+
+function goToProof(n) {
+  proofActive = (n + proofTotal) % proofTotal;
+  proofTrack.style.transform = `translateX(-${proofActive * 100}%)`;
+  proofDots.forEach((d, i) => d.classList.toggle('active', i === proofActive));
+}
+
+document.getElementById('proofPrev')?.addEventListener('click', () => goToProof(proofActive - 1));
+document.getElementById('proofNext')?.addEventListener('click', () => goToProof(proofActive + 1));
+proofDots.forEach(d => d.addEventListener('click', () => goToProof(parseInt(d.dataset.proof))));
+
+// Touch swipe for proof carousel
+let proofTouchX = null;
+proofTrack?.addEventListener('touchstart', e => { proofTouchX = e.touches[0].clientX; }, { passive: true });
+proofTrack?.addEventListener('touchend', e => {
+  if (!proofTouchX) return;
+  const dx = proofTouchX - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) goToProof(dx > 0 ? proofActive + 1 : proofActive - 1);
+  proofTouchX = null;
+}, { passive: true });
 
 // ── Quote Carousel ──────────────────────────────────────
 let qActive = 0;
